@@ -1,0 +1,639 @@
+/* Grundlegende Stile für die gesamte Seite */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container-Stile für Kalender, Login und Willkommensseite */
+.calendar-container,
+.login-container,
+.welcome-container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Spezifische Stile für die Anmelde-Seite */
+.login-container {
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-top: 0;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container label {
+    text-align: left;
+    font-weight: bold;
+}
+
+.login-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Stile für die Willkommensseite */
+.welcome-container {
+    max-width: 500px;
+    text-align: center;
+}
+.welcome-container h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+.welcome-container p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+}
+.menu-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.menu-buttons a {
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+.menu-buttons a:hover {
+    background-color: #0056b3;
+}
+
+/* Stile für die Kalender-Layouts */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.student-selector select {
+    padding: 8px 12px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#downloadPdfButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#downloadPdfButton:hover {
+    background-color: #c82333;
+}
+
+.counters-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+}
+
+.counter-item {
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.calendar-header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.calendar-header button:hover {
+    background-color: #0056b3;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.calendar-year-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.month {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.month h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+/* Allgemeine Stile für Kalendertage */
+.calendar-day-header {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.calendar-day {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    min-height: 70px;
+    position: relative;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.calendar-day.inactive {
+    color: #aaa;
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.calendar-day.weekend {
+    background-color: #ffd700;
+    color: black;
+}
+
+.day-number {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px;
+    text-align: right;
+}
+
+.day-content {
+    flex-grow: 1;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+    max-height: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Plus-Symbol in leeren Zellen */
+.calendar-day:not(.weekend) .day-content:not(.berufsschule)::after {
+    content: '+';
+    font-size: 2em;
+    color: #007bff;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    opacity: 0.3;
+}
+
+.calendar-day.weekend .day-content::after {
+    content: none;
+}
+
+/* Stile für Kurse und spezielle Tage */
+.day-content.urlaub { background-color: red; color: white; }
+.day-content.feiertage { background-color: #d3d3d3; color: #000; }
+.day-content.berufsschule { background-color: #dc3545; color: white; }
+.day-content.krank { background-color: black; color: white; }
+.day-content.einfuehrungswoche { background-color: #ff8c00; color: #000; }
+.day-content.netzwerk { background-color: #ff1493; color: white; }
+.day-content.virtualisierung { background-color: #00bfff; color: #000; }
+.day-content.storage { background-color: #0000ff; color: white; }
+.day-content.backup { background-color: #00ff00; color: #000; }
+.day-content.soc { background-color: #808000; color: white; }
+.day-content.reporting { background-color: #ffd700; color: #000; }
+.day-content.monitoring { background-color: #ffa500; color: #000; }
+.day-content.itsm { background-color: #ffff00; color: #000; }
+.day-content.automatisierung { background-color: #ffff00; color: #000; }
+.day-content.scheduling { background-color: #ff4500; color: white; }
+.day-content.citrix { background-color: #ffa500; color: #000; }
+.day-content.db { background-color: #008000; color: white; }
+.day-content.sap { background-color: #008000; color: white; }
+.day-content.linux { background-color: #008000; color: white; }
+.day-content.vulitam { background-color: #008000; color: white; }
+.day-content.m365 { background-color: #a52a2a; color: white; }
+.day-content.antivirsoft { background-color: #a52a2a; color: white; }
+.day-content.winos { background-color: #a52a2a; color: white; }
+
+/* Legende */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.legend-color.feiertage { background-color: #d3d3d3; }
+.legend-color.weekend { background-color: #ffd700; }
+.legend-color.berufsschule { background-color: #dc3545; }
+.legend-color.krank { background-color: black; }
+.legend-color.soc { background-color: #808000; }
+
+/* Modal-Stile */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.modal-buttons button,
+.modal-buttons select {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#saveButton { background-color: #28a745; color: white; }
+#saveButton:hover { background-color: #218838; }
+#deleteButton { background-color: #dc3545; color: white; }
+#deleteButton:hover { background-color: #c82333; }
+#subjectSelect { width: 100%; padding: 10px; box-sizing: border-box; }
+
+/* Modal-Kalender spezifische Stile */
+.modal-calendar-container {
+    margin-bottom: 20px;
+}
+
+.modal-calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-calendar-header h4 {
+    margin: 0;
+}
+
+.modal-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.modal-calendar-day {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.modal-calendar-day.is-selected,
+.modal-calendar-day.in-range {
+    background-color: #eaf5ff;
+}
+
+.modal-calendar-day.is-selected {
+    border: 2px solid #007bff;
+}
+
+.modal-calendar-day.inactive {
+    color: #aaa;
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Druck-Stile */
+@media print {
+    body { background: none; margin: 0; padding: 0; }
+    .calendar-container { box-shadow: none; border: none; max-width: 100%; padding: 0; }
+    .top-bar, .calendar-header button, .modal { display: none; }
+    .calendar-year-grid { grid-template-columns: repeat(3, 1fr) !important; }
+    .month-grid { gap: 5px; }
+    .calendar-day { min-height: 50px; }
+    .day-number { font-size: 0.8em; }
+    .day-content { font-size: 0.6em; }
+    .legend { display: flex !important; margin-bottom: 20px; }
+    .day-content::after { content: none !important; }
+}
+/* Zusätzliche Stile für welcome.php */
+.welcome-container {
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+}
+
+.welcome-container h2 {
+    font-size: 2.5em;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.welcome-container p {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu-buttons a {
+    width: 100%;
+    padding: 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-buttons a:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+@media (min-width: 600px) {
+    .menu-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .menu-buttons a {
+        width: auto;
+        padding: 15px 30px;
+    }
+}
+/* Zusätzliche Stile für welcome.php */
+.welcome-container {
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+}
+
+.welcome-container h2 {
+    font-size: 2.5em;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.welcome-container p {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu-buttons a {
+    width: 100%;
+    padding: 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-buttons a:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+.quarterly-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.quarterly-form-group select,
+.quarterly-form-group button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 8px;
+    border: 1px solid #bdc3c7;
+    background-color: #ecf0f1;
+    color: #34495e;
+    cursor: pointer;
+}
+
+.quarterly-form-group button {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.quarterly-form-group button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+@media (min-width: 600px) {
+    .menu-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .menu-buttons a {
+        width: auto;
+        padding: 15px 30px;
+    }
+
+    .quarterly-form-group {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .quarterly-form-group select,
+    .quarterly-form-group button {
+        width: auto;
+    }
+}
+
+/* Kalender-Layout für 3-monatige Ansicht */
+.quarterly-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.student-quarterly-container {
+    margin-bottom: 50px;
+    page-break-after: always;
+}
+@media print {
+    /* Versteckt die Benutzerinformationen beim Drucken */
+    .user-info {
+        display: none;
+    }
+
+    /* Entfernt den Schatten bei gedruckten Kalendern für saubere PDFs */
+    .calendar-container {
+        box-shadow: none !important;
+    }
+}
+/* Container für Passwortfeld und Auge */

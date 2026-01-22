@@ -1,0 +1,16 @@
+# Aktiviert die Rewrite Engine
+RewriteEngine On
+
+# Basis-Pfad (passt sich Ihrem XAMPP-Projektordner an)
+RewriteBase /azubikalender/
+
+# ----------------------------------------------------
+# GENERISCHE REGEL: Entfernt die .php-Endung für alle Dateien
+# ----------------------------------------------------
+
+# Prüft, ob die angeforderte URL KEIN existierendes Verzeichnis ist
+RewriteCond %{REQUEST_FILENAME} !-d
+# Prüft, ob die angeforderte URL mit der Endung .php existiert
+RewriteCond %{REQUEST_FILENAME}.php -f
+# Wenn ja, leitet es die Anfrage intern auf die .php-Datei um
+RewriteRule ^([^\.]+)$ $1.php [L]
